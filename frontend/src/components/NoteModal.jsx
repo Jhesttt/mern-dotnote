@@ -49,7 +49,7 @@ const NoteModal = ({ isOpen, onClose, notes, setNotes }) => {
       console.log("Error creating note", error);
       toast.error("Error creating note");
     } finally {
-      setLoading(true);
+      setLoading(false);
     }
   };
 
@@ -89,7 +89,10 @@ const NoteModal = ({ isOpen, onClose, notes, setNotes }) => {
             >
               Cancel
             </button>
-            <button className="px-4 py-2 bg-[var(--accent)] hover:bg-[var(--hover)] text-[var(--bg)] rounded-3xl cursor-pointer duration-150">
+            <button
+              disabled={loading}
+              className="px-4 py-2 bg-[var(--accent)] hover:bg-[var(--hover)] text-[var(--bg)] rounded-3xl cursor-pointer duration-150"
+            >
               Save
             </button>
           </div>

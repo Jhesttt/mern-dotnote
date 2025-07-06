@@ -28,6 +28,8 @@ const EditNote = ({ isOpen, onClose, title, content, id }) => {
         }
       );
       toast.success("Note updated successfully");
+      console.log("Anyare", res);
+
       onClose();
     } catch (error) {
       console.log("Error updating notes.", error);
