@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from "react-router";
 import AddNote from "./AddNote";
-import Darkmode from "./darkmode";
+import Darkmode from "./DarkMode.jsx";
 
 const Header = ({ notes, setNotes }) => {
   const location = useLocation();
