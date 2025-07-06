@@ -30,10 +30,13 @@ const NoteModal = ({ isOpen, onClose, notes, setNotes }) => {
     }
 
     try {
-      const res = await axios.post("http://localhost:5001/api/notes", {
-        title,
-        content,
-      });
+      const res = await axios.post(
+        "https://mern-dotnote.onrender.com/api/notes",
+        {
+          title,
+          content,
+        }
+      );
       toast.success("Note created successfully!");
       console.log(res);
 

@@ -9,7 +9,9 @@ const Home = () => {
   useEffect(() => {
     const fetchNotes = async () => {
       try {
-        const res = await axios.get("http://localhost:5001/api/notes");
+        const res = await axios.get(
+          "https://mern-dotnote.onrender.com/api/notes"
+        );
         setNotes(res.data);
       } catch (error) {
         console.log("Error fetching notes", error);

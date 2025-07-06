@@ -20,11 +20,14 @@ const EditNote = ({ isOpen, onClose, title, content, id }) => {
 
   const handleSubmit = async () => {
     try {
-      const res = await axios.put(`http://localhost:5001/api/notes/${id}`, {
-        title: editTitle,
-        content: editContent,
-      });
-      console.log(res.data);
+      const res = await axios.put(
+        `https://mern-dotnote.onrender.com/api/notes/${id}`,
+        {
+          title: editTitle,
+          content: editContent,
+        }
+      );
+      toast.success("Note updated successfully");
       onClose();
     } catch (error) {
       console.log("Error updating notes.", error);

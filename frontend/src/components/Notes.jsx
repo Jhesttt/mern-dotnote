@@ -16,7 +16,7 @@ const Notes = ({ notes, setNotes, loading, setLoading }) => {
   const handleDelete = async (id) => {
     setLoading(true);
     try {
-      await axios.delete(`http://localhost:5001/api/notes/${id}`);
+      await axios.delete(`https://mern-dotnote.onrender.com/api/notes/${id}`);
       toast.success("Note deleted successfully!");
       setNotes((prev) => prev.filter((note) => note._id !== id));
     } catch (error) {

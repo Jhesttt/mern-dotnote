@@ -17,7 +17,9 @@ const NoteDetails = () => {
   useEffect(() => {
     const fetchNote = async () => {
       try {
-        const res = await axios.get(`http://localhost:5001/api/notes/${id}`);
+        const res = await axios.get(
+          `https://mern-dotnote.onrender.com/api/notes/${id}`
+        );
         setCurrentID(res.data.note._id);
         setTitle(res.data.note.title);
         setContent(res.data.note.content);
