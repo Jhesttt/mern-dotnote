@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 const EditNote = ({ isOpen, onClose, title, content, id }) => {
   const [editTitle, setEditTitle] = useState(title);
   const [editContent, setEditContent] = useState(content);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (isOpen) {
@@ -19,6 +20,7 @@ const EditNote = ({ isOpen, onClose, title, content, id }) => {
   if (!isOpen) return null;
 
   const handleSubmit = async () => {
+    setIsLoading(true);
     try {
       const res = await axios.put(
         `https://mern-dotnote.onrender.com/api/notes/${id}`,
@@ -34,6 +36,8 @@ const EditNote = ({ isOpen, onClose, title, content, id }) => {
     } catch (error) {
       console.log("Error updating notes.", error);
       toast.error("Failed to update notes");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -48,7 +52,8 @@ const EditNote = ({ isOpen, onClose, title, content, id }) => {
       {/* Modal content */}
       <div className="relative z-50 w-[90%] max-w-2xl bg-[var(--bg)] p-6 rounded-2xl shadow-lg animate-fadeIn animate-fadeOut">
         <form
-          onSubmit={() => {
+          onSubmit={(e) => {
+            e.preventDefault();
             handleSubmit();
           }}
         >
@@ -77,7 +82,10 @@ const EditNote = ({ isOpen, onClose, title, content, id }) => {
             >
               Cancel
             </button>
-            <button className="px-4 py-2 bg-[var(--accent)] hover:bg-[var(--hover)] text-[var(--bg)] rounded-3xl cursor-pointer duration-150">
+            <button
+              disabled={isLoading}
+              className="px-4 py-2 bg-[var(--accent)] hover:bg-[var(--hover)] text-[var(--bg)] rounded-3xl cursor-pointer duration-150"
+            >
               Save
             </button>
           </div>
