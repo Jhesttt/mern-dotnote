@@ -3,7 +3,7 @@ import Home from "./pages/Home";
 import NoteDetails from "./pages/NoteDetails";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import SiteLoading from "./pages/siteLoading";
+import SiteLoading from "./pages/SiteLoading.jsx";
 
 const checkRender = async () => {
   try {
